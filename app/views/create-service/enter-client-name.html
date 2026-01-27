@@ -19,9 +19,12 @@
         <p>
           {{ govukInput({
             label: {
-              text: "What is the name of your service?",
+              text: "Enter your service name",
               classes: "govuk-label--l",
               isPageHeading: true
+            }, 
+            hint: {
+              text: "Use a descriptive name, avoiding acronyms or vague terms"
             },
             id: "client-name",
             name: "clientName"
