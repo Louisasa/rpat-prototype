@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/create-service/confirm" method="post">
+        <p>
+          {{ govukRadios({
+            name: "publicKeyType",
+            fieldset: {
+              legend: {
+                text: "How will your service authenticate with OneLogin?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "JWKS URL",
+                text: "Public key URL (JWKS) - Recommended",
+                hint: "We'll automatically fetch your public keys from a URL you provide"
+              },
+              {
+                value: "Static Key",
+                text: "Upload a public key"
+              },
+              {
+                value: "Client Secret",
+                text: "Client secret"
+              }
+            ]
+          }) }}
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
