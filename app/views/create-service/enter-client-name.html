@@ -15,7 +15,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="/path/of/next/page" method="post">
+      <form class="form" action="/create-service/confirm" method="post">
         <p>
           {{ govukInput({
             label: {
@@ -24,10 +24,11 @@
               isPageHeading: true
             }, 
             hint: {
-              text: "Use a descriptive name, avoiding acronyms or vague terms"
+              text: "Use a descriptive name, avoiding acronyms"
             },
             id: "client-name",
-            name: "clientName"
+            name: "clientName",
+            value: data['clientName']
           }) }}
         </p>
 
