@@ -15,8 +15,34 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="/create-service/confirm" method="post">
+      <form class="form" action="/create-service/select-scopes" method="post">
         <p>
+          {% set staticKeyHtml %}
+          {{ govukInput({
+            id: "static-key",
+            name: "staticKey",
+            type: "key",
+            autocomplete: "key",
+            spellcheck: false,
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Public key"
+            }
+          }) }}
+          {% endset -%}
+          {% set clientSecretHtml %}
+          {{ govukInput({
+            id: "client-secret",
+            name: "clientSecret",
+            type: "secret",
+            autocomplete: "secret",
+            spellcheck: false,
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Client secret"
+            }
+          }) }}
+          {% endset -%}
           {{ govukRadios({
             name: "publicKeyType",
             fieldset: {
@@ -34,11 +60,17 @@
               },
               {
                 value: "Static Key",
-                text: "Upload a public key"
+                text: "Upload a public key",
+                conditional: {
+                  html: staticKeyHtml
+                }
               },
               {
                 value: "Client Secret",
-                text: "Client secret"
+                text: "Client secret",
+                conditional: {
+                  html: clientSecretHtml
+                }
               }
             ]
           }) }}

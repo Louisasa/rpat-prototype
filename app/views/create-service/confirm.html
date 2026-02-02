@@ -47,7 +47,23 @@
             actions: {
               items: [
                 {
-                  href: "/create-service/enter-client-name",
+                  href: "/create-service/select-key-type",
+                  text: "Change"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Scopes"
+            },
+            value:  {
+              text: data['selectedScopes'].join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/create-service/select-scopes",
                   text: "Change"
                 }
               ]
