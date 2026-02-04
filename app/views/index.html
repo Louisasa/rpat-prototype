@@ -13,6 +13,12 @@
       {{ serviceName }}
     </h1>
 
+    {{ govukButton({
+      text: "Start Journey",
+      href: "/create-service/start-page.html",
+      isStartButton: true
+    }) }}
+
     {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
   </div>
 </div>
