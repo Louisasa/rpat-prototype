@@ -70,13 +70,27 @@
         {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
+            Redirect url(s)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% set urlList = data['redirectUrls'].split(',') %}
+            {% for url in urlList %}
+              {{ url | trim }}<br>
+            {% endfor %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/create-service/redirect-urls">Change<span class="govuk-visually-hidden"> scopes</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
             Scopes
           </dt>
           <dd class="govuk-summary-list__value">
             {{data['selectedScopes'].join(', ')}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/create-service/select-select">Change<span class="govuk-visually-hidden"> scopes</span></a>
+            <a class="govuk-link" href="/create-service/select-scopes">Change<span class="govuk-visually-hidden"> scopes</span></a>
           </dd>
         </div>
       </dl>
@@ -85,6 +99,22 @@
 
         {{ govukButton({
           text: "Create"
+        }) }}
+
+      </form>
+
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Add identity journey configuration"
+        }) }}
+
+      </form>
+
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Add additional configuration"
         }) }}
 
       </form>
