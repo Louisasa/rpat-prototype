@@ -73,8 +73,7 @@
             Redirect url(s)
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set urlList = data['redirectUrls'].split(',') %}
-            {% for url in urlList %}
+            {% for url in redirectUrls %}
               {{ url | trim }}<br>
             {% endfor %}
           </dd>
